@@ -16,13 +16,16 @@ class CapsuleFactory extends Factory
      */
     public function definition(): array
     {
+        $latitude = $this->faker->latitude;
+        $longitude = $this->faker->longitude;
+
         return [
             "user_id" => 0,
             "title" => $this->faker->unique()->words(3, true),
             "message" => $this->faker->paragraph,
-            "gps_location" => $this->faker->location_on_land(),
+            "gps_location" => "$latitude,$longitude",
             "ip_address" => $this->faker->localIpv4(),
-            "reveal-date" => $this->faker->date(),
+            "reveal_date" => $this->faker->date(),
             "visibility" => $this->faker->randomElement(["private", "public", "unlisted"]),
             "mode" => $this->faker->randomElement(["regular", "surprise"]),
             "color" => $this->faker->randomElement(["red", "yellow", "green", "blue", "pink"]),
