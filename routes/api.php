@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\User\CapsuleController;
 
-// Route::get('/capsules', [CapsuleController::class, "getAllCapsules"] );
 
 Route::group(["prefix" => "v0.1"], function(){
     Route::group(["prefix" => "user"], function(){
