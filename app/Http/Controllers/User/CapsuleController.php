@@ -17,4 +17,9 @@ class CapsuleController extends Controller
         $capsules = CapsuleService::getRevealedCapsules($id);
         return $this->responseJSON($capsules);
     }
+
+    function getClosedCapsules($id){
+        $capsules = CapsuleService::getClosedCapsules($id);
+        return $this->responseJSON($capsules);
+    }
 }
