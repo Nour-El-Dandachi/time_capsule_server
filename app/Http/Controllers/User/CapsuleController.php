@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Capsule;
 use  App\Services\User\CapsuleService;
 use Illuminate\Http\Request;
 
@@ -22,4 +23,21 @@ class CapsuleController extends Controller
         $capsules = CapsuleService::getClosedCapsules($id);
         return $this->responseJSON($capsules);
     }
+
+    function addOrUpdateCapsule(Request $request, $id = null){
+        $capsule = new Capsule;
+        if($id){
+            $capsule = CapsuleService::getAllCapsules($id);
+        }
+
+        $data = $request->all();
+
+        $capsule = CapsuleService::createOrUpdateCapsules($data, $capsule);
+        if($capsule){
+            return $this->responseJSON($capsule);
+        }
+        return $this->responseJSON($capsule, "error", 400);
+
+    }
+
 }

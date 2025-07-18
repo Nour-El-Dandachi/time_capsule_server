@@ -25,6 +25,7 @@ class CapsuleFactory extends Factory
             "message" => $this->faker->paragraph,
             "gps_location" => "$latitude,$longitude",
             "ip_address" => $this->faker->localIpv4(),
+            "country" => $this->faker->country(),
             "reveal_date" => $this->faker->date(),
             "visibility" => $this->faker->randomElement(["private", "public", "unlisted"]),
             "mode" => $this->faker->randomElement(["regular", "surprise"]),

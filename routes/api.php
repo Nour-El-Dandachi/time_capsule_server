@@ -11,6 +11,6 @@ Route::group(["prefix" => "v0.1"], function(){
         Route::get('/capsules/{id?}', [CapsuleController::class, "getAllCapsules"] );
         Route::get('/revealed_capsules/{id?}', [CapsuleController::class, "getRevealedCapsules"] );
         Route::get('/closed_capsules/{id?}', [CapsuleController::class, "getClosedCapsules"] );
-        Route::post('/add_update_capsule/{id?}', [CapsuleController::class, "addOrUpdateTask"] );
+        Route::post('/add_update_capsule/{id?}', [CapsuleController::class, "addOrUpdateCapsule"] );
     });
 });
