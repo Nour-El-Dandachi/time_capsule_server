@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\User\CapsuleController;
 use App\Http\Controllers\User\MediaController;
+// use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\AuthController;
 
 Route::group(["prefix" => "v0.1"], function(){
     Route::group(["prefix" => "user"], function(){
@@ -15,5 +17,8 @@ Route::group(["prefix" => "v0.1"], function(){
 
         Route::get('/media/{id?}', [MediaController::class, "getAllMedia"] );
         Route::post('/add_update_media/{id?}', [MediaController::class, "addOrUpdateMedia"] );
+
+        Route::post('/login', [AuthController::class, "login"]);
+        Route::post('/register', [AuthController::class, "register"]);
     });
 });
