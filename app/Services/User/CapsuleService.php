@@ -15,18 +15,18 @@ class CapsuleService
         return Capsule::find($id);
     }
 
-    static function getRevealedCapsules($id = null)
+    static function getRevealedCapsules($user_id = null)
     {
-        if ($id) {
-            return Capsule::where("user_id", $id)->where("is_revealed", 1)->get();
+        if ($user_id ) {
+            return Capsule::where("user_id", $user_id )->where("is_revealed", 1)->get();
         }
         return Capsule::where("visibility", "public")->where("is_revealed", 1)->get();
     }
 
-    static function getClosedCapsules($id)
+    static function getClosedCapsules($user_id )
     {
-        if ($id) {
-            return Capsule::where("user_id", $id)->where("is_revealed", 0)->get();
+        if ($user_id ) {
+            return Capsule::where("user_id", $user_id )->where("is_revealed", 0)->get();
         }
     }
 

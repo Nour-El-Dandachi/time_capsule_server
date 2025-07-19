@@ -33,6 +33,11 @@ class User extends Authenticatable implements JWTSubject{
         'remember_token',
     ];
 
+    public function capsules()
+    {
+        return $this->hasMany(Capsule::class);
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -53,4 +58,6 @@ class User extends Authenticatable implements JWTSubject{
     public function getJWTCustomClaims(){
         return [];
     }
+
+
 }

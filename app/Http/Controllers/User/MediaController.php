@@ -14,6 +14,12 @@ class MediaController extends Controller
         return $this->responseJSON($media);
     }
 
+    function getAllMediaByCapsuleId($capsule_id){
+        $media = MediaService::getAllMediaByCapsuleId($capsule_id);
+
+        return $this->responseJSON($media);
+    }
+
     function addOrUpdateMedia(Request $request, $id = null){
         $media = new Media();
         if($id){

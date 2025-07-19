@@ -14,13 +14,13 @@ class CapsuleController extends Controller
         return $this->responseJSON($capsules);
     }
 
-    function getRevealedCapsules($id = null){
-        $capsules = CapsuleService::getRevealedCapsules($id);
+    function getRevealedCapsules($user_id  = null){
+        $capsules = CapsuleService::getRevealedCapsules($user_id );
         return $this->responseJSON($capsules);
     }
 
-    function getClosedCapsules($id){
-        $capsules = CapsuleService::getClosedCapsules($id);
+    function getClosedCapsules($user_id ){
+        $capsules = CapsuleService::getClosedCapsules($user_id );
         return $this->responseJSON($capsules);
     }
 
