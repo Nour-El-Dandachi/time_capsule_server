@@ -8,17 +8,23 @@ use App\Http\Controllers\User\MediaController;
 // use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\AuthController;
 
-Route::group(["prefix" => "v0.1"], function(){
-    Route::group(["prefix" => "user"], function(){
-        Route::get('/capsules/{id?}', [CapsuleController::class, "getAllCapsules"] );
-        Route::get('/revealed_capsules/{id?}', [CapsuleController::class, "getRevealedCapsules"] );
-        Route::get('/closed_capsules/{id?}', [CapsuleController::class, "getClosedCapsules"] );
-        Route::post('/add_update_capsule/{id?}', [CapsuleController::class, "addOrUpdateCapsule"] );
+Route::group(["prefix" => "v0.1"], function () {
+    
+    Route::group(["middleware" => "auth:api"], function () {
+        Route::group(["prefix" => "user"], function () {
+            Route::get('/capsules/{id?}', [CapsuleController::class, "getAllCapsules"]);
+            Route::get('/revealed_capsules/{id?}', [CapsuleController::class, "getRevealedCapsules"]);
+            Route::get('/closed_capsules/{id?}', [CapsuleController::class, "getClosedCapsules"]);
+            Route::post('/add_update_capsule/{id?}', [CapsuleController::class, "addOrUpdateCapsule"]);
 
-        Route::get('/media/{id?}', [MediaController::class, "getAllMedia"] );
-        Route::post('/add_update_media/{id?}', [MediaController::class, "addOrUpdateMedia"] );
+            Route::get('/media/{id?}', [MediaController::class, "getAllMedia"]);
+            Route::post('/add_update_media/{id?}', [MediaController::class, "addOrUpdateMedia"]);
+        });
+    });
 
-        Route::post('/login', [AuthController::class, "login"]);
-        Route::post('/register', [AuthController::class, "register"]);
+    //UNAUTHENTICATED APIs
+    Route::group(["prefix" => "guest"], function () {
+        Route::post("/login", [AuthController::class, "login"]);
+        Route::post("/register", [AuthController::class, "register"]);
     });
 });
