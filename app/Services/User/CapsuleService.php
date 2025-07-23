@@ -56,4 +56,14 @@ class CapsuleService
         $capsule->save();
         return $capsule;
     }
+
+    static function getByEmoji($emoji){
+
+        if ($emoji) {
+            return Capsule::where("visibility", "public")->where("is_revealed", 1)->where("emoji", $emoji)->get();
+        }
+        else{
+            return null;
+        }
+    }
 }

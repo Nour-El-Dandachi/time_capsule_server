@@ -14,6 +14,7 @@ Route::group(["prefix" => "v0.1"], function () {
             Route::get('/capsules/{id?}', [CapsuleController::class, "getAllCapsules"]);
             Route::get('/revealed_capsules/{id?}', [CapsuleController::class, "getRevealedCapsules"]);
             Route::get('/closed_capsules/{id?}', [CapsuleController::class, "getClosedCapsules"]);
+            Route::get('/get_by_emoji/{emoji?}', [CapsuleController::class, "getByEmoji"]);
             Route::post('/add_update_capsule/{id?}', [CapsuleController::class, "addOrUpdateCapsule"]);
 
             Route::get('/media/{id?}', [MediaController::class, "getAllMedia"]);

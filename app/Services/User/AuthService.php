@@ -43,4 +43,6 @@ class AuthService {
         $user->token = $token;
         return $user;
     }
+
+    
 }
